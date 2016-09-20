@@ -9,6 +9,7 @@ body {
 
 header.header {
     padding-top: 0;
+    height: initial;
 }
 
 .jumbotron img.logo {
@@ -18,7 +19,7 @@ header.header {
 
 .jumbotron .container {
     padding-bottom: 2.8125rem;
-    /* */
+    vertical-align: top;
 }
 
 .jumbotron .site-title,
