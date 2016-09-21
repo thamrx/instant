@@ -1,15 +1,58 @@
 body {
     font-family: "neuzeit-grotesk",sans-serif;
 }
+/* Make first section match browser height */
+.section { height: 100vh;}
+.section—first { height: 90vh; }
+
+/* Video player in background: http://slicejack.com/fullscreen-html5-video-background-css/ */
+.hero-video {
+    opacity: 0.2;
+    z-index: -1;
+}
+
+.fullscreen-bg {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: -100;
+}
+
+.fullscreen-bg__video {
+    position: absolute;
+    opacity: 0.2
+    top: 50%;
+    left: 50%;
+    width: auto;
+    height: auto;
+    min-width: 100%;
+    min-height: 100%;
+    -webkit-transform: translate(-50%, -50%);
+       -moz-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+	    transform: translate(-50%, -50%);
+}
+
+/* remove player on smaller screens */
+@media (max-width: 767px) {
+    .fullscreen-bg {
+        background: url('http://dev2.slicejack.com/fullscreen-video-demo/img/videoframe.jpg') center center / cover no-repeat;
+    }
+
+    .fullscreen-bg__video {
+        display: none;
+    }
+}
 
 .jumbotron {
-    background: black url(../img/bg-header.jpg) no-repeat center bottom;
-    background-size: cover;
+     background: black url(../img/bg-header.jpg) no-repeat center bottom;
 }
 
 header.header {
     padding-top: 0;
-    height: initial;
 }
 
 .jumbotron img.logo {
@@ -23,24 +66,31 @@ header.header {
 }
 
 .jumbotron .site-title,
-.section-footer .site-title {
-    padding-top: 2.8125rem;
+.section-footer .site-title object{
+    padding-top: 6.8125rem;
     font-size: 5rem;
     font-weight: 500;
+    margin-bottom: 1.6rem;
 }
 
 .jumbotron p.intro-text,
 .section-footer p.intro-text {
     font-size: 1.625rem;
     line-height: 2.188rem;
+    max-width: 90%;
+    margin: auto;
     margin-bottom: 4rem;
 }
 
+
 .jumbotron img.appstore,
 .section-footer img.appstore {
-    min-width: 12rem;
+    min-width: 18rem;
 }
 
+img.logo-type {
+    width: 16.250rem;
+}
 section.section-usp {
     padding-bottom: 2.8125rem;
 }
@@ -75,7 +125,7 @@ section.section-usp {
 
 .section-usp h3 {
     font-size: 2.750rem;
-    line-height: 3.438rem;  
+    line-height: 3.438rem;
 }
 
 .section-usp .usp-push {
@@ -110,11 +160,15 @@ section.section-usp {
 }
 
 @media (max-width: 767px) {
+    .site-title object {
+        max-width: 100%;
+    }
+
     .section-usp h3 {
         font-size: 2rem;
         line-height: 2.3rem;
     }
-    
+
     .section-usp .usp-text {
         font-size: 1.3rem;
         line-height: 1.6rem;
