@@ -2,14 +2,24 @@ body {
     font-family: "neuzeit-grotesk",sans-serif;
 }
 
-.jumbotron {
-    background: black url(../img/bg-header.jpg) no-repeat center bottom;
-    background-size: cover;
+.hero-video {
+	overflow: hidden;
+    position: relative;
+	vertical-align: top !important;
+}
+
+.video-background { /* class name used in javascript too */
+    width: 100%; /* width needs to be set to 100% */
+    height: 100%; /* height needs to be set to 100% */
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
 }
 
 header.header {
-    padding-top: 0;
-    height: initial;
+    padding: 0;
+	background: black;
 }
 
 .jumbotron img.logo {
@@ -19,26 +29,34 @@ header.header {
 
 .jumbotron .container {
     padding-bottom: 2.8125rem;
-    vertical-align: top;
+	vertical-align: top;
+}
+
+.jumbotron span.site-title {
+	display: block;
 }
 
 .jumbotron .site-title,
 .section-footer .site-title {
-    padding-top: 2.8125rem;
-    font-size: 5rem;
-    font-weight: 500;
+    padding: 4rem 0 0.5rem 0;
+	margin: 0;
+}
+
+.section-footer h1.site-title {
+	font-size: 5rem;
 }
 
 .jumbotron p.intro-text,
 .section-footer p.intro-text {
     font-size: 1.625rem;
     line-height: 2.188rem;
+    max-width: 90%;
+    margin: auto;
     margin-bottom: 4rem;
 }
 
-.jumbotron img.appstore,
-.section-footer img.appstore {
-    min-width: 12rem;
+img.appstore{
+	min-width: 18rem;
 }
 
 section.section-usp {
@@ -75,7 +93,7 @@ section.section-usp {
 
 .section-usp h3 {
     font-size: 2.750rem;
-    line-height: 3.438rem;  
+    line-height: 3.438rem;
 }
 
 .section-usp .usp-push {
@@ -110,13 +128,47 @@ section.section-usp {
 }
 
 @media (max-width: 767px) {
+	/* remove player on smaller screens */
+    .video-background {
+        display: none;
+    }
+	
+	header.header {
+		background: black url(../img/bg-header.jpg) no-repeat center center;
+		padding-bottom: 10px;
+	}
+	
+	.jumbotron .site-title {
+		padding: 2rem 0 0.5rem 0;
+	}
+	
+	.section-footer h1.site-title {
+		font-size: 3rem;
+	}
+	
+	.jumbotron p.intro-text {
+		max-width: none;
+	}
+	
     .section-usp h3 {
         font-size: 2rem;
         line-height: 2.3rem;
     }
-    
+
     .section-usp .usp-text {
         font-size: 1.3rem;
         line-height: 1.6rem;
     }
+}
+
+@media (min-width: 1200px) and (max-width: 1400px) {
+	.jumbotron p.intro-text {
+		margin-bottom: 2.5rem;
+	}
+}
+
+@media (min-width: 1400px) {
+	.jumbotron .site-title {
+		padding: 5rem 0 1.5rem 0
+	}
 }
