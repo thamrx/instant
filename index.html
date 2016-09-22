@@ -32,6 +32,7 @@
 
 		<script src="https://use.typekit.net/ycq0qxf.js"></script>
 		<script>try{Typekit.load({ async: true });}catch(e){}</script>
+		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	</head>
 
 	<body>
@@ -39,29 +40,23 @@
 		================================================== -->
 
 		<header class="jumbotron header bg-inverse text-xs-center center-vertically">
-
-			<div class="container">
-				<img class="logo" src="img/instant-iphone-header.svg" />
-				<h1 class="site-title">
-				<object type="image/svg+xml" data="img/logo-instant.svg">Instant</object>
-				</h1>
-				<p class="intro-text">
-					Never miss babies first steps because your camera wasn't rolling. Get Instant.
-				</p>
-				<a href="https://forms.typeform.io/to/yHnuUSrL4G">
-					<img class="appstore" src="img/appstore-button.svg" />
-				</a>
-			</div>
-
-
 			<div class="hero-video">
-				<video loop muted autoplay poster="img/bg-headerr.jpg" class="fullscreen-bg__video">
-					<source src="video/big_buck_bunny.webm" type="video/webm">
-					<source src="img/small-video-w00tcamp-2015.mp4" type="video/mp4">
-					<source src="video/big_buck_bunny.ogv" type="video/ogg">
+				<video loop muted autoplay class="video-background">
+					<source src="video/w00tcamp-2015.mp4" type="video/mp4">
 				</video>
+				<div class="container">
+					<img class="logo" src="img/header-logo.svg" />
+					<span class="site-title">
+						<object type="image/svg+xml" data="img/logo-instant.svg">Instant</object>
+					</span>
+					<p class="intro-text">
+						Never miss babies first steps because your camera wasn't rolling. Get Instant.
+					</p>
+					<a href="https://forms.typeform.io/to/yHnuUSrL4G">
+						<img class="appstore" src="img/appstore-button.svg" />
+					</a>
+				</div>
 			</div>
-
 		</header>
 
 		<section class="section-usp">
@@ -126,18 +121,48 @@
 			<div class="container">
 				<div class="row">
 					<div class="media">
-						<h1 class="display-3 site-title">Instant download</h1>
+						<h1 class="site-title">Instant download</h1>
 						<p class="intro-text">
 							Shoot & share videos instantly with your friends<br>
-							with the fastest video app of the world.
+							with the fastest video app in the world.
 						</p>
-						<a href="https://itunes.apple.com/app/instant-buttons/id482166012">
+						<a href="https://forms.typeform.io/to/yHnuUSrL4G">
 							<img class="appstore" src="img/appstore-button.svg" />
 						</a>
 					</div>
 				</div>
 			</div>
 		</footer>
+		<script type="text/javascript">
+			function scaleToFill() {
+				if ($(window).width() > 767) {
+					$('header.header').css('background', 'rgba(0, 0, 0, 0.8)');
+				} else {
+					$('header.header').css('background', '');
+				}
+				$('video.video-background').each(function(index, videoTag) {
+				   var $video = $(videoTag),
+					   videoRatio = videoTag.videoWidth / videoTag.videoHeight,
+					   tagRatio = $video.width() / $video.height(),
+					   val;
 
+				   if (videoRatio < tagRatio) {
+					   val = tagRatio / videoRatio * 1.02; <!-- size increased by 2% because value is not fine enough and sometimes leaves a couple of white pixels at the edges -->
+				   } else if (tagRatio < videoRatio) {
+					   val = videoRatio / tagRatio * 2;
+				   }
+				   $video.css('transform','scale(' + val  + ',' + val + ')');
+
+				});
+			}
+
+			$(function () {
+				$('.video-background').on('loadeddata', scaleToFill);
+
+				$(window).resize(function() {
+					scaleToFill();
+				});
+			});
+		</script>
 	</body>
 </html>

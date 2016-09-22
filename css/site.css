@@ -1,58 +1,25 @@
 body {
     font-family: "neuzeit-grotesk",sans-serif;
 }
-/* Make first section match browser height */
-.section { height: 100vh;}
-.section—first { height: 90vh; }
 
-/* Video player in background: http://slicejack.com/fullscreen-html5-video-background-css/ */
 .hero-video {
-    opacity: 0.2;
+	overflow: hidden;
+    position: relative;
+	vertical-align: top !important;
+}
+
+.video-background { /* class name used in javascript too */
+    width: 100%; /* width needs to be set to 100% */
+    height: 100%; /* height needs to be set to 100% */
+    position: absolute;
+    left: 0;
+    top: 0;
     z-index: -1;
 }
 
-.fullscreen-bg {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    overflow: hidden;
-    z-index: -100;
-}
-
-.fullscreen-bg__video {
-    position: absolute;
-    opacity: 0.2
-    top: 50%;
-    left: 50%;
-    width: auto;
-    height: auto;
-    min-width: 100%;
-    min-height: 100%;
-    -webkit-transform: translate(-50%, -50%);
-       -moz-transform: translate(-50%, -50%);
-        -ms-transform: translate(-50%, -50%);
-	    transform: translate(-50%, -50%);
-}
-
-/* remove player on smaller screens */
-@media (max-width: 767px) {
-    .fullscreen-bg {
-        background: url('http://dev2.slicejack.com/fullscreen-video-demo/img/videoframe.jpg') center center / cover no-repeat;
-    }
-
-    .fullscreen-bg__video {
-        display: none;
-    }
-}
-
-.jumbotron {
-     background: black url(../img/bg-header.jpg) no-repeat center bottom;
-}
-
 header.header {
-    padding-top: 0;
+    padding: 0;
+	background: black;
 }
 
 .jumbotron img.logo {
@@ -62,15 +29,21 @@ header.header {
 
 .jumbotron .container {
     padding-bottom: 2.8125rem;
-    vertical-align: top;
+	vertical-align: top;
+}
+
+.jumbotron span.site-title {
+	display: block;
 }
 
 .jumbotron .site-title,
-.section-footer .site-title object{
-    padding-top: 6.8125rem;
-    font-size: 5rem;
-    font-weight: 500;
-    margin-bottom: 1.6rem;
+.section-footer .site-title {
+    padding: 4rem 0 0.5rem 0;
+	margin: 0;
+}
+
+.section-footer h1.site-title {
+	font-size: 5rem;
 }
 
 .jumbotron p.intro-text,
@@ -82,15 +55,10 @@ header.header {
     margin-bottom: 4rem;
 }
 
-
-.jumbotron img.appstore,
-.section-footer img.appstore {
-    min-width: 18rem;
+img.appstore{
+	min-width: 18rem;
 }
 
-img.logo-type {
-    width: 16.250rem;
-}
 section.section-usp {
     padding-bottom: 2.8125rem;
 }
@@ -160,10 +128,28 @@ section.section-usp {
 }
 
 @media (max-width: 767px) {
-    .site-title object {
-        max-width: 100%;
+	/* remove player on smaller screens */
+    .video-background {
+        display: none;
     }
-
+	
+	header.header {
+		background: black url(../img/bg-header.jpg) no-repeat center center;
+		padding-bottom: 10px;
+	}
+	
+	.jumbotron .site-title {
+		padding: 2rem 0 0.5rem 0;
+	}
+	
+	.section-footer h1.site-title {
+		font-size: 3rem;
+	}
+	
+	.jumbotron p.intro-text {
+		max-width: none;
+	}
+	
     .section-usp h3 {
         font-size: 2rem;
         line-height: 2.3rem;
@@ -173,4 +159,16 @@ section.section-usp {
         font-size: 1.3rem;
         line-height: 1.6rem;
     }
+}
+
+@media (min-width: 1200px) and (max-width: 1400px) {
+	.jumbotron p.intro-text {
+		margin-bottom: 2.5rem;
+	}
+}
+
+@media (min-width: 1400px) {
+	.jumbotron .site-title {
+		padding: 5rem 0 1.5rem 0
+	}
 }
